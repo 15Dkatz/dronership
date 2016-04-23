@@ -1,17 +1,45 @@
 <ion-view view-title="Drone">
   <ion-content class="">
-   <!--  <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p> -->
+
+    <div id="map" data-tap-disabled="true"></div>
+
+    <button class="button button-block icon-right ion-play" ng-click="getInfo()">Getinfo</button>
+
+
+    <div class="list">
+      <div class="item">
+        <h2 class="location">Location: {{data.observation_location.city}}</h2>
+        <br>
+        <h2 class="longitude">Longitude: {{long}}</h2>
+        <h2 class="latitude">Latitude: {{lat}}</h2>
+      </div>
+      <div class="item">
+        <h2 class="weather">Weather: {{data.weather}}</h2>
+        <!-- picture -->
+      </div>
+      <div class="item">
+        <h2 class="temperature">Temperature: {{data.temperature_string}}</h2>
+      </div>
+      <div class="item">
+        <h2 class="">Wind direction: {{data.wind_dir}}</h2>
+        <h2 class="">Wind degrees: {{data.wind_degrees}}</h2>
+        <h2 class="">Wind mph: {{data.wind_mph}}</h2>
+        <h2 class="">Wind gust mph: {{data.wind_gust_mph}}</h2>
+        <!-- gust -->
+        <!-- wind_mph -->
+        <!-- wind_gust_mph -->
+      </div>
+
+
+
+<!--       // weather
+    // temperature_string
+    // relative_humidity
+    // wind_string
+    // wind_mph
+    // wind_gust_mph
+    // observation_location.full -->
+    </div>
+
   </ion-content>
 </ion-view>

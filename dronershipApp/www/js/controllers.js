@@ -1,9 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('LaunchCtrl', function($scope) {
+// myApp.controller('LaunchCtrl', function($scope) {
 
-  
-})
+
+// })
 
 // .controller('ChatsCtrl', function($scope, Chats) {
 //   // With the new view caching in Ionic, Controllers are only called
@@ -20,12 +20,7 @@ angular.module('starter.controllers', [])
 //   };
 // })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+// .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+//   $scope.chat = Chats.get($stateParams.chatId);
+// })
 
-.controller('DroneCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
