@@ -1,4 +1,4 @@
-myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform, $http) {
+myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform, $http, $rootScope) {
 
 
   	$scope.test = "testing $scope, $scope works| MAP EXAMPLE";
@@ -10,53 +10,55 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
   	// get Information method
 
   	$scope.getInfo = function() {
-  		// Grab Location **********
-  		ionic.Platform.ready(function(){
-	    // Code goes here
-    	$ionicLoading.show({
-            template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
-        });
+
+  		// unccomment grabLocation section for the location info
+  // 		// Grab Location **********
+  // 		ionic.Platform.ready(function(){
+	 //    // Code goes here
+  //   	$ionicLoading.show({
+  //           template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
+  //       });
          
-        var posOptions = {
-            enableHighAccuracy: true,
-            timeout: 20000,
-            maximumAge: 0
-        };
+  //       var posOptions = {
+  //           enableHighAccuracy: true,
+  //           timeout: 20000,
+  //           maximumAge: 0
+  //       };
  		
- 		$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-            var lat  = position.coords.latitude;
-            var long = position.coords.longitude;
+ 	// 	$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+  //           var lat  = position.coords.latitude;
+  //           var long = position.coords.longitude;
              
-            var myLatlng = new google.maps.LatLng(lat, long);
+  //           var myLatlng = new google.maps.LatLng(lat, long);
              
-            var mapOptions = {
-                center: myLatlng,
-                zoom: 16,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };          
+  //           var mapOptions = {
+  //               center: myLatlng,
+  //               zoom: 16,
+  //               mapTypeId: google.maps.MapTypeId.ROADMAP
+  //           };          
              
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);          
+  //           var map = new google.maps.Map(document.getElementById("map"), mapOptions);          
              
-            $scope.map = map;   
-            $ionicLoading.hide();           
+  //           $scope.map = map;   
+  //           $ionicLoading.hide();           
 
-            console.log(lat, long, map);
+  //           console.log(lat, long, map);
 
-            $scope.lat = lat;
-            $scope.long = long;
+  //           $scope.lat = lat;
+  //           $scope.long = long;
             
-            $scope.getWunderGround();
+  //           $scope.getWunderGround();
 
 
-	        }, function(err) {
-	            $ionicLoading.hide();
-	            console.log(err);
-	        });
+	 //        }, function(err) {
+	 //            $ionicLoading.hide();
+	 //            console.log(err);
+	 //        });
 	        
-		})  
+		// })  
 
-  		  		// grab JSON api wunderground
-  		// http://api.wunderground.com/api/06dfbc32cb33068b/conditions/q/37.8,-122.4.json
+
+  		$scope.calculateStatus();
 
   	}
 
@@ -84,32 +86,35 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
   	$scope.temp_f;
 
 
-  	$scope.getWunderGround = function() {
+  	// $scope.getWunderGround = function() {
 
-	   var getString = 'http://api.wunderground.com/api/06dfbc32cb33068b/conditions/q/' + $scope.lat + ',' + $scope.long + '.json';
+  		// uncomment to call API! ******************
+		// var getString = 'http://api.wunderground.com/api/06dfbc32cb33068b/conditions/q/' + $scope.lat + ',' + $scope.long + '.json';
 
-    	$http({
-	        method : "GET",
-	        url : getString
-	    }).then(function mySucces(response) {
-	        // $scope.myWelcome = response.data;
-	        console.log(response.data);
-	        $scope.data = response.data.current_observation;
+  //   	$http({
+	 //        method : "GET",
+	 //        url : getString
+	 //    }).then(function mySucces(response) {
+	 //        // $scope.myWelcome = response.data;
+	 //        console.log(response.data);
+	 //        $scope.data = response.data.current_observation;
 
 
-	        $scope.weather = $scope.data.weather;
-		  	$scope.wind_mph = $scope.data.wind_mph;
-		  	$scope.wind_gust_mph = $scope.data.wind_gust_mph;
-		  	$scope.relative_humidity = $scope.data.relative_humidity;
-		  	$scope.temp_f = $scope.data.temp_f;
-	        // 
+	 //        $scope.weather = $scope.data.weather;
+		//   	$scope.wind_mph = $scope.data.wind_mph;
+		//   	$scope.wind_gust_mph = $scope.data.wind_gust_mph;
+		//   	$scope.relative_humidity = $scope.data.relative_humidity;
+		//   	$scope.temp_f = $scope.data.temp_f;
+	 //        // 
 
-	    }, function myError(response) {
-	        // $scope.myWelcome = response.statusText;
-	        console.log(response.statusText);
-	    });
+	 //    }, function myError(response) {
+	 //        // $scope.myWelcome = response.statusText;
+	 //        console.log(response.statusText);
+	 //    });
+	 	// ******************
+	 	// $scope.calculateStatus();
 
-	}
+	// }
 
 	$scope.status = 1;
 
@@ -121,8 +126,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		var humidityModifier = .05;
 
 		$scope.weather = "Partly Cloudy";
-		$scope.wind_mph = 10.8;
-		$scope.wind_gust_mph = "6.5";
+		$scope.wind_mph = 1.8;
+		$scope.wind_gust_mph = "1.5";
 		$scope.relative_humidity = "64%";
 		$scope.temp_f = 63.1;
 		console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
@@ -141,15 +146,19 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 		if ($scope.status>.75) {
 			console.log("Clear");
+			$rootScope.launchStatus = "Clear";
 		}
 		else if ($scope.status>.5) {
-			console.log("A little risky");	
+			console.log("A little risky");
+			$rootScope.launchStatus = "A little risky";	
 		}
 		else if ($scope.status>.25) {
 			console.log("Very risky");	
+			$rootScope.launchStatus = "Very risky";
 		}
 		else {
-			console.log("No-go");	
+			console.log("No-go");
+			$rootScope.launchStatus = "No-go";	
 		}
 
 

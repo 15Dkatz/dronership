@@ -1,4 +1,4 @@
-myApp.controller('LaunchCtrl', function($scope) {
+myApp.controller('LaunchCtrl', function($scope, $rootScope) {
 
 
 })
