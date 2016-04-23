@@ -117,10 +117,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		// uncomment following lines for production... saving values for algorithm building
 		var windMphLimit = 30;
 		var windGustLimit = 30;
+		var humidityLimit = 100;
+		var humidityModifier = .05;
 
 		$scope.weather = "Partly Cloudy";
-		$scope.wind_mph = 1.8;
-		$scope.wind_gust_mph = "2.5";
+		$scope.wind_mph = 10.8;
+		$scope.wind_gust_mph = "6.5";
 		$scope.relative_humidity = "64%";
 		$scope.temp_f = 63.1;
 		console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
@@ -128,8 +130,31 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		var windMphDanger = $scope.wind_mph/windMphLimit;
 		$scope.status -= windMphDanger;
 
-		var windGustDanger = $scope.wind_gust_mph/windGustLimit;
+		var windGustDanger = parseFloat($scope.wind_gust_mph)/windGustLimit;
 		$scope.status -= windGustDanger;
+
+		var humidityDanger = (parseFloat($scope.relative_humidity)/humidityLimit)*humidityModifier;
+		$scope.status -= humidityDanger;
+
+		// var tempDanger 
+		// console.log("resulting status", $scope.status);
+
+		if ($scope.status>.75) {
+			console.log("Clear");
+		}
+		else if ($scope.status>.5) {
+			console.log("A little risky");	
+		}
+		else if ($scope.status>.25) {
+			console.log("Very risky");	
+		}
+		else {
+			console.log("No-go");	
+		}
+
+
+
+
 
 
 
