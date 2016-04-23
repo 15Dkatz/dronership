@@ -63,7 +63,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
   	$scope.data;
 
-  	
+
   	// $scope.weather;
   	// $scope.temperature;
   	// $scope.wind_degrees;
@@ -76,6 +76,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
   	// wind_mph
   	// wind_gust_mph
   	// observation_location.full
+
+  	$scope.weather;
+  	$scope.wind_mph;
+  	$scope.wind_gust_mph;
+  	$scope.relative_humidity;
+  	$scope.temp_f;
 
 
   	$scope.getWunderGround = function() {
@@ -90,6 +96,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	        console.log(response.data);
 	        $scope.data = response.data.current_observation;
 
+
+	        $scope.weather = $scope.data.weather;
+		  	$scope.wind_mph = $scope.data.wind_mph;
+		  	$scope.wind_gust_mph = $scope.data.wind_gust_mph;
+		  	$scope.relative_humidity = $scope.data.relative_humidity;
+		  	$scope.temp_f = $scope.data.temp_f;
 	        // 
 
 	    }, function myError(response) {
@@ -97,11 +109,32 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	        console.log(response.statusText);
 	    });
 
-	    
-
-    	// $scope.name = newName;
 	}
 
+	$scope.status = 1;
+
+	$scope.calculateStatus = function() {
+		// uncomment following lines for production... saving values for algorithm building
+		var windMphLimit = 30;
+		var windGustLimit = 30;
+
+		$scope.weather = "Partly Cloudy";
+		$scope.wind_mph = 1.8;
+		$scope.wind_gust_mph = "2.5";
+		$scope.relative_humidity = "64%";
+		$scope.temp_f = 63.1;
+		console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
+
+		var windMphDanger = $scope.wind_mph/windMphLimit;
+		$scope.status -= windMphDanger;
+
+		var windGustDanger = $scope.wind_gust_mph/windGustLimit;
+		$scope.status -= windGustDanger;
+
+
+
+
+	}
 
 
 
