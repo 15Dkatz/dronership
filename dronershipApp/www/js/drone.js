@@ -123,12 +123,55 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	    });
 	 	// ******************
 	 	
-	 	
+
 	 	$rootScope.$broadcast('mapCentered');
 
 	}
 
 	$scope.status = 1;
+
+	$scope.myDrone;
+
+	$scope.showOtherDroneForm = false;
+
+	$scope.selectedDrone = function(myDrone) {
+		console.log("myDrone", myDrone);
+		switch (myDrone) {
+			case "DJI Phantom 4":
+				$scope.showOtherDroneForm = false;
+				// $scope.myDrone = {
+				// 	flightTime: "",
+				// 	operatingRange: "",
+					
+				// }
+				break;
+			case "AEE Toruk AP10":
+				$scope.showOtherDroneForm = false;
+				break;
+			default:
+				$scope.showOtherDroneForm = true;
+				break;
+
+		}
+
+
+	}
+
+	// pickedDrone
+	// needs
+	// private String name;
+    // private double flightTime;              // minutes
+    // private double operatingRange;          // meters
+    // private double weight;                  // grams
+    // private double maxAltitude;             // meters
+    // private double maxSpeed;                // meters/s
+    // private double minTemp;                 // celsius (we can convert to F later)
+    // private double maxTemp;
+    // private boolean collisionAvoidance;     // does it contain collision avoidance?
+    // private boolean isAutonomous;           // capable of autonomous flight?
+    // private boolean gpsCompatible;          // does the drone have GPS?
+
+
 
 	$scope.calculateStatus = function() {
 		var windMphLimit = 30;
