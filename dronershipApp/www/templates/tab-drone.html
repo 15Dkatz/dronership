@@ -17,7 +17,7 @@
       </label>
 
     <!-- </div> -->
-    
+      <!-- change in controller -->
       <div class="" ng-show="showOtherDroneForm">
       <div class="item item-divider">
         Your Unique Drone Specs
@@ -34,12 +34,12 @@
 
       <label class="item item-input item-stacked-label">
       <span class="input-label">Operating Range (meters)</span>
-      <input type="number" placeholder="Placeholder 2" ng-model="myDrone.weight">
+      <input type="number" placeholder="Placeholder 2" ng-model="myDrone.weight"> {{}}
       </label>
       </div>
-    </div>
+    <!-- </div> -->
 
-    <div class="list" ng-show="showInfo">
+      <div class="" ng-show="showInfo">
       <div class="item item-divider">
         Conditions
       </div>
@@ -82,6 +82,7 @@
       <div class="item">
         <h2 class="">{{launchStatus}}</h2>
       </div>
+    </div>
     </div>
 
     <div class="button-container">

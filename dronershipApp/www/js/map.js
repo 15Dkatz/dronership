@@ -72,10 +72,10 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
             geojson: {
                 data: data,
                 style: {
-                    fillColor: "green",
+                    fillColor: "red",
                     weight: 2,
                     opacity: 1,
-                    color: 'white',
+                    color: 'black',
                     dashArray: '3',
                     fillOpacity: 0.7
                 }

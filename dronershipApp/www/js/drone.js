@@ -101,7 +101,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
     	$http({
 	        method : "GET",
 	        url : getString
-	    }).then(function mySucces(response) {
+	    }).then(function mySuccess(response) {
 	        // $scope.myWelcome = response.data;
 	        console.log(response.data);
 	        $scope.data = response.data.current_observation;
@@ -154,8 +154,15 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 				}
 				$scope.showOtherDroneForm = false;
 				break;
-			default:
+			case "Not Listed":
 				$scope.showOtherDroneForm = true;
+				$scope.myDrone = {
+					// flightTime: 0, //minutes
+					// operatingRange: 0, //operating range
+					// weight: 0 //grams
+				}
+				break;
+			default:
 				break;
 
 
