@@ -17,7 +17,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
   	$scope.postPrefix = "";
 
-  	$scope.calculateLaunchStatus = function(flightTime, weight, operatingRange) {
+  	$scope.calculateLaunchStatus = function(flightTime, weight, operatingRange, latitudeInput, longitudeInput) {
   		$scope.postPrefix = "Re-";
   		$scope.showInfo = true;
   		// unccomment grabLocation section for the location info
@@ -55,8 +55,25 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
             $scope.lat = lat;
             $scope.long = long;
 
+
+            if (operatingRange!=undefined) {
+				$scope.myDrone.operatingRange = operatingRange;
+			}
+
+	  		if (latitudeInput) {
+	  			console.log("latitudeInput seen", latitudeInput);
+	  			$scope.lat = latitudeInput;
+	  		}
+
+	  		if (longitudeInput) {
+	  			$scope.long = longitudeInput;
+	  		}
+
+
             $rootScope.latitude = $scope.lat;
             $rootScope.longitude = $scope.long;
+
+            console.log("la", $scope.lat, "lo", $scope.long);
 
             console.log("flightTime", flightTime, "weight", weight, "operatingRange", operatingRange);
 
@@ -71,11 +88,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			}
 			
 			// $scope.myDrone.operatingRange = 0;	
-			if (operatingRange!=undefined) {
-				$scope.myDrone.operatingRange = operatingRange;
-			}
-
-
+			
 
 
             getWunderGround();
@@ -87,6 +100,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	        });
 	        
 		})  
+
 
 
   		// $scope.calculateStatus();
@@ -270,10 +284,13 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		$scope.inFlyZoneStr = "No";
 
 		$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
+			// check for 
+			console.log($scope.lat, $scope.long, "flyZone check")
+
       	for(var i = 0; i < data.features.length; i++)
       	{
 
-      		if (gju.pointInPolygon({"type":"Point","coordinates":[$scope.lat,$scope.long]},
+      		if (gju.pointInPolygon({"type":"Point","coordinates":[$scope.lat, $scope.long]},
                {"type":"Polygon", "coordinates":data.features[i].geometry.coordinates})
       			)
       		{
@@ -284,14 +301,14 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
       		}
 
       		else{ 
-      			console.log("ok", $rootScope.inFlyZone)
+      			console.log("ok", $rootScope.inFlyZoneBl)
       		}
       		
       		// console.log(data.features[i].geometry.coordinates.toString())
 
       	}
 
-      	console.log("inFlyZone", $rootScope.inFlyZone);
+      	console.log("inFlyZone", $rootScope.inFlyZoneBl);
 
       	if ($rootScope.inFlyZoneBl) {
       		$scope.status = 0;

@@ -39,30 +39,6 @@
       </label>
       </div>
 
-      <div class="item row">
-         <div class="col">
-        <label class="item-input item-select">
-          <div class="input-label">
-            Lightsaber
-          </div>
-          <select>
-            <option>Blue</option>
-            <option selected>Green</option>
-            <option>Red</option>
-          </select>
-        </label>
-      </div>
-      <div class="col">
-        <div class="item-input-inset">
-          <label class="item-input-wrapper">
-            <input type="text" placeholder="Email">
-          </label>
-          <!-- <button class="button button-small">
-            Submit
-          </button> -->
-        </div>
-      </div>
-      </div>
 
       <div class="" ng-show="showInfo">
         <div class="item item-divider">
@@ -97,6 +73,22 @@
         </div>
 
         <div class="item item-divider">
+        Coordinates
+        </div>
+        <div class="item row">
+           <div class="col">
+            <label class="item-input">
+              <input type="number" placeholder="Latitude: {{latitude}}" ng-model="latitudeInput">
+            </label>
+        </div>
+        <div class="col">
+            <label class="item-input">
+              <input type="number" placeholder="Longitude: {{longitude}}" ng-model="longitudeInput">
+            </label>
+          </div>
+        </div>
+
+        <div class="item item-divider">
           Launch Status
         </div>
         <div class="item">
@@ -106,7 +98,7 @@
     </div>
 
     <div class="button-container">
-      <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus(flightTime, weight, operatingRange)">{{postPrefix}}Check Launch Conditions</button>
+      <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus(flightTime, weight, operatingRange, latitudeInput, longitudeInput)">{{postPrefix}}Check Launch Conditions</button>
       <!-- Uncomment  following to test a function -->
 <!--       <button class="button button-block icon-right ion-play" ng-click="testFunction(flightTime, weight, operatingRange)">Test Function</button> -->
     </div>
