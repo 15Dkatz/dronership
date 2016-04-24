@@ -15,7 +15,10 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
   		operatingRange: 0
   	};
 
+  	$scope.postPrefix = "";
+
   	$scope.calculateLaunchStatus = function(flightTime, weight, operatingRange) {
+  		$scope.postPrefix = "Re-";
   		$scope.showInfo = true;
   		// unccomment grabLocation section for the location info
   		// Grab Location **********

@@ -14,8 +14,8 @@
           <option>Flypro XEagle Sport</option>
           <option>Autel Robotics X-Star Premium</option>
           <option>ProDrone Byrd Premium</option>
-          <option>Not Listed</option>
-          <option>or Check conditions without drone</option>
+          <option>I have a different drone</option>
+          <option>Check conditions without drone</option>
         </select>
       </label>
 
@@ -44,10 +44,13 @@
         Conditions
       </div>
       <div class="item">
-        <h2 class="location">Location: {{data.observation_location.city}}</h2>
-        <h2 class="weather">Weather: {{data.weather}}</h2>
+        <img class="" src={{data.icon_url}}></img>
+        <h2 class="weather">{{data.weather}}</h2>
+        <h2 class="location">{{data.observation_location.city}}</h2>
+        
         
         <!-- picture from wunderGround !!!!!!!!!!!!--> 
+
       </div>
       <div class="item">
         <h2 class="temperature">Temperature: {{data.temperature_string}}</h2>
@@ -56,11 +59,14 @@
       </div>
 
       <div class="item">
-        <h2 class="">Wind Direction: {{data.wind_dir}}</h2>
-        <h2 class="">Wind Degrees: {{data.wind_degrees}}°</h2>
-        <h2 class="">Wind Mph: {{data.wind_mph}}</h2>
-        <h2 class="">Wind Gust mph: {{data.wind_gust_mph}}</h2>
+        <h2 class="">Wind: {{data.wind_string}}</h2>
+        <h2 class="">Direction and Speed: {{data.wind_dir}} at {{data.wind_mph}}mph</h2>
+        <h2 class="">Gusts mph: {{data.wind_gust_mph}}</h2>
 
+      </div>
+
+      <div class="item">
+        <h2 class="">In no fly zone: yes/no</h2>
       </div>
 
       <div class="item item-divider">
@@ -73,8 +79,8 @@
     </div>
 
     <div class="button-container">
-      <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus(flightTime, weight, operatingRange)">Check Launch Conditions</button>
-      <!-- Uncomment  following to test A function -->
+      <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus(flightTime, weight, operatingRange)">{{postPrefix}}Check Launch Conditions</button>
+      <!-- Uncomment  following to test a function -->
 <!--       <button class="button button-block icon-right ion-play" ng-click="testFunction(flightTime, weight, operatingRange)">Test Function</button> -->
     </div>
 
@@ -87,3 +93,5 @@
 <!-- TO DO LIST -->
 <!-- make pretty! -->
         <!-- picture from wunderGround !!!!!!!!!!!!--> 
+        <!-- good data vis techniques need to come in -->
+        <!-- maybe show a circular progress/status bar based on the status with the different factors showing -->
