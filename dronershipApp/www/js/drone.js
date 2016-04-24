@@ -37,6 +37,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
  		$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
+            // position.coords.direction
+
             var myLatlng = new google.maps.LatLng(lat, long);
             var mapOptions = {
                 center: myLatlng,
@@ -72,6 +74,13 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
             $rootScope.latitude = $scope.lat;
             $rootScope.longitude = $scope.long;
+
+            // for coordinates section
+            $scope.latitudePlaceholder = ($rootScope.latitude).toPrecision(6);
+            $scope.longitudePlaceholder = ($rootScope.longitude).toPrecision(6);
+
+            // $rootScope.latitude = ($rootScope.latitude).toPrecision(6);
+            // $rootScope.longitude = ($rootScope.longitude).toPrecision(6);
 
             console.log("la", $scope.lat, "lo", $scope.long);
 
@@ -215,7 +224,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 				}
 				break;
-			case "Not Listed":
+			case "I have a different drone":
+				console.log($scope.showOtherDroneForm);
 				$scope.showOtherDroneForm = true;
 				// default drone specs;
 				$scope.myDrone = {
@@ -241,6 +251,13 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		$rootScope.latitude = latitude;
 		$rootScope.longitude = longitude;
 	 // $scope.myData = [10,20,30,40,60, 80, 20, 50];
+	}
+
+	$scope.customCoordinates = false;
+
+	$scope.coordinateChange = function() {
+		console.log($scope.customCoordinates);
+		$scope.customCoordinates = !$scope.customCoordinates;
 	}
 
 

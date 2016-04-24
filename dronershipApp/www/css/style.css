@@ -6,7 +6,10 @@
 }
 */
 /*#mapid { height: 300px; }*/
-
+/*html {
+	text-align: center;
+}
+*/
 .button-container {
 	width: 90%;
 	margin-left: 5%;
@@ -31,6 +34,21 @@
 	/*filter: drop-shadow(0,0,0,0, rgba(0,0,0,0.9));*/
 	-webkit-filter: grayscale(0.4);
 	filter: grayscale(0.4);
+
+}
+
+.background-drone {
+	left: -10%;
+	margin-top: -50%;
+	width: 110vw;
+	height: 120vh;
+	position: absolute;
+    background-image: url("../img/sky5.png");
+	-webkit-filter: opacity(.2);
+	filter: opacity(.2);
+	/*filter: drop-shadow(0,0,0,0, rgba(0,0,0,0.9));*/
+/*	-webkit-filter: grayscale(1);
+	filter: grayscale(1);*/
 
 }
 
@@ -114,4 +132,51 @@
 	margin: 5px;
 	color: white;
 	box-shadow: 2px 2px 2px #666;
+}
+
+.locationTitle {
+	/*font-size: 30px;*/
+	font-style: bold;
+	/*color: #000;*/
+	/*margin-top: 5%;*/
+	font-size: 1.2rem;
+	text-align: center;
+}
+
+strong {
+	font-size: 1.2rem;
+
+}
+
+.iconImg {
+	/*font-size: 200px;*/
+	width: 15%;
+	height: 15%;
+	margin-top: 5%;
+	margin-left: 50%;
+	transform: translateX(-50%);
+}
+
+.col-right {
+	text-align: right;
+	padding: 9%;
+}
+
+.col-item {
+	font-size: 1.2rem;
+}
+
+.center {
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.gearIcon {
+	width: 20px;
+	height: 20px;
+}
+
+.button-container {
+	position: absolute;
+	margin-bottom: 5%;
 }
