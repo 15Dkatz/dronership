@@ -9,8 +9,13 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
   	$scope.showInfo = false;
 
   	// get Information method
+  	$scope.myDrone = {
+  		"flightTime": 0,
+  		"weight": 0,
+  		"operatingRange": 0
+  	};
 
-  	$scope.calculateLaunchStatus = function() {
+  	$scope.calculateLaunchStatus = function(flightTime, weight, operatingRange) {
   		$scope.showInfo = true;
   		// unccomment grabLocation section for the location info
   		// Grab Location **********
@@ -53,6 +58,26 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
             $rootScope.latitude = $scope.lat;
             $rootScope.longitude = $scope.long;
+
+            console.log("flightTime", flightTime, "weight", weight, "operatingRange", operatingRange);
+
+            // $scope.myDrone.flightTime = 0;
+			if (flightTime!=undefined) {
+				$scope.myDrone.flightTime = flightTime;
+			}
+
+			// $scope.myDrone.weight = 0;
+			if (weight!=undefined) {
+				$scope.myDrone.weight = weight;
+			}
+			
+			// $scope.myDrone.operatingRange = 0;	
+			if (operatingRange!=undefined) {
+				$scope.myDrone.operatingRange = operatingRange;
+			}
+
+
+
 
             getWunderGround();
 
@@ -132,6 +157,10 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 	$scope.myDrone;
 
+	// $scope.myDrone.flightTime = 0;
+	// $scope.myDrone.operatingRange = 0;
+	// $scope.myDrone.weight = 0;
+
 	$scope.showOtherDroneForm = false;
 
 	$scope.selectedDrone = function(myDrone) {
@@ -154,6 +183,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 				}
 				$scope.showOtherDroneForm = false;
 				break;
+			// add more drone cases
+
 			case "Not Listed":
 				$scope.showOtherDroneForm = true;
 				$scope.myDrone = {
@@ -171,25 +202,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 	}
 
-	// pickedDrone
-	// needs
-	// private String name;
-    // private double flightTime;              // minutes
-    // private double operatingRange;          // meters
-    // private double weight;                  // grams
-    // private double maxAltitude;             // meters
-    // private double maxSpeed;                // meters/s
-    // private double minTemp;                 // celsius (we can convert to F later)
-    // private double maxTemp;
-    // private boolean collisionAvoidance;     // does it contain collision avoidance?
-    // private boolean isAutonomous;           // capable of autonomous flight?
-    // private boolean gpsCompatible;          // does the drone have GPS?
-
+	$scope.flightTime;
+	$scope.weight;
+	$scope.operatingRange;
 
 
 	$scope.calculateStatus = function() {
-		console.log("myDrone specs", $scope.myDrone);
-
 		var windMphLimit = 30;
 		var windGustLimit = 30;
 		var humidityLimit = 100;
@@ -215,7 +233,21 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 		var humidityDanger = (parseFloat($scope.relative_humidity)/humidityLimit)*humidityModifier;
 		$scope.status -= humidityDanger;
-		// console.log("resulting Status", $scope.status);
+		console.log("resulting Status", $scope.status);
+
+		// calculate dronePlusses
+		
+
+
+		console.log("myDrone specs", $scope.myDrone);
+		// add more algorhythmic analysis based on drones
+		// add plusses to the status/percentage based on droneSpecs
+
+		var weightGoal = 10000; //grams
+		var weightPlus = $scope.myDrone.weight/weightGoal //returns a number 0.0-1.0;
+		$scope.status += weightPlus;
+		console.log("resulting Status", $scope.status);
+
 
 		// var tempDanger 
 		// console.log(windMphDanger, "windMphDanger", windGustDanger, "windGustDanger", humidityDanger, "humidityDanger", "resulting status", $scope.status);
@@ -238,10 +270,13 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			$rootScope.launchStatus = "No-go";	
 		}
 
-		// console.log("rootScope.launchStatus", );
 
 	}
 
+$scope.testFunction = function(flightTime, weight, operatingRange) {
+	// $scope.myDrone.weight = $scope.weight;
+	console.log("f", flightTime, "w", weight, "or", operatingRange);
+}
 
 
 });

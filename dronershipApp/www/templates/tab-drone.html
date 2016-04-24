@@ -23,18 +23,18 @@
         Your Unique Drone Specs
       </div>
       <label class="item item-input item-stacked-label">
-      <span class="input-label">Flight Time (minutes)</span>
-      <input type="number" placeholder="Placeholder 2" ng-model="myDrone.flightTime">
+      <span class="input-label">Flight Time</span>
+      <input type="number" placeholder="minutes" ng-model="flightTime">
       </label>
 
       <label class="item item-input item-stacked-label">
-      <span class="input-label">Weight (grams)</span>
-      <input type="number" placeholder="Placeholder 1" ng-model="myDrone.operatingRange">
+      <span class="input-label">Weight</span>
+      <input type="number" placeholder="grams" ng-model="weight">
       </label>
 
       <label class="item item-input item-stacked-label">
-      <span class="input-label">Operating Range (meters)</span>
-      <input type="number" placeholder="Placeholder 2" ng-model="myDrone.weight"> {{}}
+      <span class="input-label">Operating Range</span>
+      <input type="number" placeholder="meters" ng-model="operatingRange">
       </label>
       </div>
     <!-- </div> -->
@@ -66,16 +66,9 @@
         <h2 class="">Wind Degrees: {{data.wind_degrees}}°</h2>
         <h2 class="">Wind Mph: {{data.wind_mph}}</h2>
         <h2 class="">Wind Gust mph: {{data.wind_gust_mph}}</h2>
+
       </div>
 
-
-<!--       // weather
-    // temperature_string
-    // relative_humidity
-    // wind_string
-    // wind_mph
-    // wind_gust_mph
-    // observation_location.full -->
       <div class="item item-divider">
         Launch Status
       </div>
@@ -86,7 +79,8 @@
     </div>
 
     <div class="button-container">
-    <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus()">Check Launch Conditions</button>
+      <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus(flightTime, weight, operatingRange)">Check Launch Conditions</button>
+<!--       <button class="button button-block icon-right ion-play" ng-click="testFunction(flightTime, weight, operatingRange)">Test Function</button> -->
     </div>
 
     
