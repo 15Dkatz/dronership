@@ -13,6 +13,53 @@
 	/*color: #fff;*/
 }
 
-#response {
+
+
+.background-clear {
+	margin-top: -3%;
+	width: 100vw;
+    height: 88vh;
+    background-image: url("../img/sky4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+	-webkit-filter: opacity(.4);
+	filter: opacity(.4);
+	/*filter: drop-shadow(0,0,0,0, rgba(0,0,0,0.9));*/
+	-webkit-filter: grayscale(0.4);
+	filter: grayscale(0.4);
+
+	color: #fff;
+}
+
+.responseIcon {
+	font-size: 4rem;
+	z-index: 1;
+	position: absolute;
 	text-align: center;
+	display: inline-block;
+	/*vertical-align: middle;*/
+	top: 20%;
+	transform: translateY(-40%);
+
+	left: 50%;
+	transform: translateX(-50%);
+	line-height: normal;     
+}
+
+.responseText {
+	z-index: 1;
+	position: absolute;
+	text-align: center;
+	display: inline-block;
+	/*vertical-align: middle;*/
+	top: 32%;
+	transform: translateY(-50%);
+
+	left: 50%;
+	transform: translateX(-50%);
+
+	font-size: 2rem;
+	/*line-height: normal;     */
 }

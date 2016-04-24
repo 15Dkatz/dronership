@@ -261,7 +261,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 		if ($scope.status>.75) {
 			console.log("Clear");
-			$rootScope.launchStatus = "Clear";
+			$rootScope.launchStatus = "Clear for takeoff!";
 		}
 		else if ($scope.status>.5) {
 			console.log("A little risky");
