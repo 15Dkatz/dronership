@@ -3,7 +3,7 @@
 
     <div id="map" data-tap-disabled="true"></div>
 
-    <button class="button button-block icon-right ion-play" ng-click="getInfo()">Getinfo</button>
+    <button class="button button-block icon-right ion-play" ng-click="getInfo()">Get Info</button>
 
 
     <div class="list">
@@ -19,15 +19,17 @@
       </div>
       <div class="item">
         <h2 class="temperature">Temperature: {{data.temperature_string}}</h2>
+        <h2 class="humidity">Humidity: {{data.relative_humidity}}</h2>
+
       </div>
+      <!-- div class="item item-divider">
+        Wind
+      </div> -->
       <div class="item">
-        <h2 class="">Wind direction: {{data.wind_dir}}</h2>
-        <h2 class="">Wind degrees: {{data.wind_degrees}}</h2>
-        <h2 class="">Wind mph: {{data.wind_mph}}</h2>
-        <h2 class="">Wind gust mph: {{data.wind_gust_mph}}</h2>
-        <!-- gust -->
-        <!-- wind_mph -->
-        <!-- wind_gust_mph -->
+        <h2 class="">Wind Direction: {{data.wind_dir}}</h2>
+        <h2 class="">Wind Degrees: {{data.wind_degrees}}°</h2>
+        <h2 class="">Wind Mph: {{data.wind_mph}}</h2>
+        <h2 class="">Wind Gust mph: {{data.wind_gust_mph}}</h2>
       </div>
 <!--       // weather
     // temperature_string
@@ -36,8 +38,15 @@
     // wind_mph
     // wind_gust_mph
     // observation_location.full -->
+      <div class="item item-divider">
+        Launch Status
+      </div>
+      <div class="item">
+        <h2 class="">{{launchStatus}}</h2>
+      </div>
     </div>
-     <button class="button button-block icon-right ion-play" ng-click="calculateStatus()">Getinfo</button>
+
+     <!-- <button class="button button-block icon-right ion-play" ng-click="calculateStatus()">Calculate Status</button> -->
 
   </ion-content>
 </ion-view>
