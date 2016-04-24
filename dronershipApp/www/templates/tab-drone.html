@@ -3,10 +3,28 @@
 
     <div id="map" data-tap-disabled="true"></div>
 
-    <button class="button button-block icon-right ion-play" ng-click="getInfo()">Get Info</button>
-
-
+    
     <div class="list">
+      <div class="item item-divider">
+        Your Drone Specs
+      </div>
+      <label class="item item-input item-stacked-label">
+      <span class="input-label">Weight</span>
+      <input type="text" placeholder="Placeholder 1">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+      <span class="input-label">Motor Speed</span>
+      <input type="text" placeholder="Placeholder 2">
+      </label>
+
+      
+    </div>
+
+    <div class="list" ng-show="showInfo">
+      <div class="item item-divider">
+        Conditions
+      </div>
       <div class="item">
         <h2 class="location">Location: {{data.observation_location.city}}</h2>
         <br>
@@ -31,6 +49,8 @@
         <h2 class="">Wind Mph: {{data.wind_mph}}</h2>
         <h2 class="">Wind Gust mph: {{data.wind_gust_mph}}</h2>
       </div>
+
+
 <!--       // weather
     // temperature_string
     // relative_humidity
@@ -45,6 +65,10 @@
         <h2 class="">{{launchStatus}}</h2>
       </div>
     </div>
+
+    <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus()">Calculate Launch Status</button>
+
+    
 
      <!-- <button class="button button-block icon-right ion-play" ng-click="calculateStatus()">Calculate Status</button> -->
 

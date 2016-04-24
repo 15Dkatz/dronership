@@ -6,11 +6,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
   	$scope.long;
   	$scope.lat;
 
+  	$scope.showInfo = false;
 
   	// get Information method
 
-  	$scope.getInfo = function() {
-
+  	$scope.calculateLaunchStatus = function() {
+  		$scope.showInfo = true;
   		// unccomment grabLocation section for the location info
   		// Grab Location **********
   		ionic.Platform.ready(function(){
@@ -111,6 +112,9 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		  	$scope.wind_gust_mph = $scope.data.wind_gust_mph;
 		  	$scope.relative_humidity = $scope.data.relative_humidity;
 		  	$scope.temp_f = $scope.data.temp_f;
+		  	console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
+
+		  	$scope.calculateStatus();
 	        // 
 
 	    }, function myError(response) {
@@ -118,8 +122,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	        console.log(response.statusText);
 	    });
 	 	// ******************
-	 	$scope.calculateStatus();
-
+	 	
+	 	
 	 	$rootScope.$broadcast('mapCentered');
 
 	}
@@ -132,25 +136,31 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		var humidityLimit = 100;
 		var humidityModifier = .05;
 
+		$scope.status = 1;
+
 		// Modify the following to implement test conditions **************
 		// $scope.weather = "Partly Cloudy";
 		// $scope.wind_mph = 1.8;
 		// $scope.wind_gust_mph = "1.5";
 		// $scope.relative_humidity = "64%";
 		// $scope.temp_f = 63.1;
-		console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
+		// console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
 
 		var windMphDanger = $scope.wind_mph/windMphLimit;
 		$scope.status -= windMphDanger;
+		// console.log("resulting Status", $scope.status);
 
 		var windGustDanger = parseFloat($scope.wind_gust_mph)/windGustLimit;
 		$scope.status -= windGustDanger;
+		// console.log("resulting Status", $scope.status);
 
 		var humidityDanger = (parseFloat($scope.relative_humidity)/humidityLimit)*humidityModifier;
 		$scope.status -= humidityDanger;
+		// console.log("resulting Status", $scope.status);
 
 		// var tempDanger 
-		// console.log("resulting status", $scope.status);
+		// console.log(windMphDanger, "windMphDanger", windGustDanger, "windGustDanger", humidityDanger, "humidityDanger", "resulting status", $scope.status);
+		// console.log("resulting Status", $scope.status);
 
 		if ($scope.status>.75) {
 			console.log("Clear");
@@ -169,7 +179,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			$rootScope.launchStatus = "No-go";	
 		}
 
-
+		// console.log("rootScope.launchStatus", );
 
 	}
 

@@ -3,47 +3,6 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
 
   	$scope.test = "testing $scope, $scope works| MAP page";
 
-    // angular.extend($scope, {
-    // $scope.center = {
-    //     lat: 40.095,
-    //     lng: -3.823,
-    //     zoom: 4
-    // }
-    //     // defaults: {
-        //     scrollWheelZoom: false
-        // }
-    // }); 
-
-    // angular.extend($scope, {
-    //     japan: {
-    //         // lat: $rootScope.latitude,
-    //         // lng: $rootScope.longitude,
-    //         lat: 37.26,
-    //         lng: 138.86,
-    //         zoom: 4
-    //     },
-    //     defaults: {
-    //         scrollWheelZoom: false
-    //     }
-    // });
-
-    // // Get the countries geojson data from a JSON
-    // $http.get("examples/json/JPN.geo.json").success(function(data, status) {
-    //     angular.extend($scope, {
-    //         geojson: {
-    //             data: data,
-    //             style: {
-    //                 fillColor: "green",
-    //                 weight: 2,
-    //                 opacity: 1,
-    //                 color: 'white',
-    //                 dashArray: '3',
-    //                 fillOpacity: 0.7
-    //             }
-    //         }
-    //     });
-    // });
-    // });
      var local_icons = {
         // default_icon: {},
         pin_icon: {
@@ -54,36 +13,17 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
 
 
 
-    // angular.extend($scope, {
-    //     center: {
-    //         lat: 37.78,
-    //         lng: -122.399,
-    //         // lat: $rootScope.latitude,
-    //         // lng: $rootScope.longitude,
-    //         zoom: 11
-    //     },
-    //      markers: {
-    //         m1: {
-    //             lat: 37.78,
-    //             lng: -122.399,
-    //             message: "Your location",
-    //             icon: local_icons.pin_icon
-    //         },
-    //     },
-    //     defaults: {
-    //         scrollWheelZoom: true
-    //     }
+    var lat = 34.052235;
+    var lng = -118.24368;
 
-    // });
-    var lat = 47.78;
-    var lng = -122.399;
+    // 34.0522° N, 118.2437° 
 
     $scope.center = {
         lat: lat,
         lng: lng,
         // lat: $rootScope.latitude,
         // lng: $rootScope.longitude,
-        zoom: 13
+        zoom: 11
     }
 
     $scope.markers = {
@@ -98,7 +38,9 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
     $rootScope.$on('mapCentered', function() {
       console.log("map Centered");
       setTimeout(function() {
-        $scope.reloadMap();
+        $scope.$apply(function() {
+          $scope.reloadMap();
+        })
       }, 500);
       
     })
@@ -109,7 +51,7 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
       $scope.center = {
         lat: $rootScope.latitude,
         lng: $rootScope.longitude,
-        zoom: 13
+        zoom: 11
       }
 
       $scope.markers = {

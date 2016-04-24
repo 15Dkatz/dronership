@@ -72,6 +72,6 @@ var myApp = angular.module('starter', ['ionic', 'starter.controllers', 'starter.
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/launch');
+  $urlRouterProvider.otherwise('/tab/map');
 
 });
