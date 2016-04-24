@@ -13,24 +13,45 @@
 	/*color: #fff;*/
 }
 
-
-
-.background-clear {
+.background {
 	margin-top: -3%;
 	width: 100vw;
     height: 88vh;
-    background-image: url("../img/sky4.png");
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+}
 
+
+.background-clear {
+    background-image: url("../img/sky4.png");
 	-webkit-filter: opacity(.4);
 	filter: opacity(.4);
 	/*filter: drop-shadow(0,0,0,0, rgba(0,0,0,0.9));*/
 	-webkit-filter: grayscale(0.4);
 	filter: grayscale(0.4);
 
-	color: #fff;
+}
+
+.background-no-go {
+	
+    background-image: url("../img/cloud.png");
+	-webkit-filter: grayscale(1);
+	filter: grayscale(1)
+}
+
+.background-little-risky {
+    background-image: url("../img/little-risky.png");
+	-webkit-filter: opacity(.3);
+	filter: opacity(.3);
+}
+
+
+.background-very-risky {
+    background-image: url("../img/very-risky.png");
+	-webkit-filter: grayscale(0.8);
+	filter: grayscale(0.8)
 }
 
 .responseIcon {
@@ -60,6 +81,14 @@
 	left: 50%;
 	transform: translateX(-50%);
 
-	font-size: 2rem;
+	font-size: 2rem;	
+}
+
+.responseText-clear, .responseText-little-risky  {
+	color: #000;
+}
+
+.responseText-no-go, .responseText-very-risky {
+	color: #fff;
 	/*line-height: normal;     */
 }
