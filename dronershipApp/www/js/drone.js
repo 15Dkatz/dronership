@@ -300,30 +300,23 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		$rootScope.inFlyZoneBl = false;
 		$scope.inFlyZoneStr = "No";
 
-		$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
-			// check for 
-			console.log($scope.lat, $scope.long, "flyZone check")
 
+      	$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
       	for(var i = 0; i < data.features.length; i++)
-      	{
-
-      		if (gju.pointInPolygon({"type":"Point","coordinates":[$scope.lat, $scope.long]},
-               {"type":"Polygon", "coordinates":data.features[i].geometry.coordinates})
-      			)
-      		{
-      			$rootScope.inFlyZoneBl = true;
-      			$scope.inFlyZoneStr = "Yes";
+	      	{
+	      		if(gju.pointInPolygon({"type":"Point","coordinates":[-158.6178,59.2828]},
+                 {"type":"Polygon", "coordinates": data.features[i].geometry.coordinates}))
+	      	{
+	      		
       			console.log("in the no fly zone");
-      			break;
-      		}
+	      	}
+	      	else
+	      	{	
 
-      		else{ 
-      			console.log("ok", $rootScope.inFlyZoneBl)
-      		}
-      		
-      		// console.log(data.features[i].geometry.coordinates.toString())
-
-      	}
+	      		console.log("ok", $rootScope.inFlyZoneBl)
+	      	}
+	    }
+		
 
       	console.log("inFlyZone", $rootScope.inFlyZoneBl);
 
@@ -351,14 +344,11 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			$rootScope.launchStatus = "No-Go";	
 		}
 
-      	
+		$rootScope.$broadcast("changeLbackground");      	
 
       });
 
-
-
-
-		$rootScope.$broadcast("changeLbackground");
+	$rootScope.$broadcast("changeLbackground");
 
 	}
 
