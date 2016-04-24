@@ -3,22 +3,39 @@
 
     <div id="map" data-tap-disabled="true"></div>
 
-    
     <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Your Drone
+        </div>
+        <select ng-model="myDrone" ng-change="selectedDrone(myDrone)">
+          <option>DJI Phantom 4</option>
+          <option>AEE Toruk AP10</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+    <!-- </div> -->
+    
+      <div class="" ng-show="showOtherDroneForm">
       <div class="item item-divider">
-        Your Drone Specs
+        Your Unique Drone Specs
       </div>
+      <label class="item item-input item-stacked-label">
+      <span class="input-label">Flight Time</span>
+      <input type="text" placeholder="Placeholder 2">
+      </label>
+
       <label class="item item-input item-stacked-label">
       <span class="input-label">Weight</span>
       <input type="text" placeholder="Placeholder 1">
       </label>
 
       <label class="item item-input item-stacked-label">
-      <span class="input-label">Motor Speed</span>
+      <span class="input-label">Max Speed</span>
       <input type="text" placeholder="Placeholder 2">
       </label>
-
-      
+      </div>
     </div>
 
     <div class="list" ng-show="showInfo">
@@ -27,11 +44,11 @@
       </div>
       <div class="item">
         <h2 class="location">Location: {{data.observation_location.city}}</h2>
-        <br>
-        <h2 class="longitude">Longitude: {{long}}</h2>
-        <h2 class="latitude">Latitude: {{lat}}</h2>
-      </div>
-      <div class="item">
+        <!-- <br> -->
+       <!--  <h2 class="longitude">Longitude: {{long}}</h2>
+        <h2 class="latitude">Latitude: {{lat}}</h2> -->
+    <!--   </div>
+      <div class="item"> -->
         <h2 class="weather">Weather: {{data.weather}}</h2>
         <!-- picture -->
       </div>
@@ -66,7 +83,9 @@
       </div>
     </div>
 
+    <div class="button-container">
     <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus()">Calculate Launch Status</button>
+    </div>
 
     
 

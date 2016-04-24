@@ -6,3 +6,9 @@
 }
 */
 /*#mapid { height: 300px; }*/
+
+.button-container {
+	width: 90%;
+	margin-left: 5%;
+	/*color: #fff;*/
+}
