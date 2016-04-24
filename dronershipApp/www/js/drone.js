@@ -89,7 +89,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		})  
 
 
-  		$scope.calculateStatus();
+  		// $scope.calculateStatus();
 
   	}
 
@@ -223,6 +223,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	$scope.weight;
 	$scope.operatingRange;
 
+	$scope.changeLatLon = function(latitude, longitude) {
+		$rootScope.latitude = latitude;
+		$rootScope.longitude = longitude;
+	 // $scope.myData = [10,20,30,40,60, 80, 20, 50];
+	}
+
 
 	$scope.calculateStatus = function() {
 		var windMphLimit = 30;
@@ -259,7 +265,39 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		var weightGoal = 10000; //grams
 		var weightPlus = $scope.myDrone.weight/weightGoal //returns a number 0.0-1.0;
 		$scope.status += weightPlus;
-		console.log("resulting Status", $scope.status);
+
+		$rootScope.inFlyZoneBl = false;
+		$scope.inFlyZoneStr = "No";
+
+		$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
+      	for(var i = 0; i < data.features.length; i++)
+      	{
+
+      		if (gju.pointInPolygon({"type":"Point","coordinates":[$scope.lat,$scope.long]},
+               {"type":"Polygon", "coordinates":data.features[i].geometry.coordinates})
+      			)
+      		{
+      			$rootScope.inFlyZoneBl = true;
+      			$scope.inFlyZoneStr = "Yes";
+      			console.log("in the no fly zone");
+      			break;
+      		}
+
+      		else{ 
+      			console.log("ok", $rootScope.inFlyZone)
+      		}
+      		
+      		// console.log(data.features[i].geometry.coordinates.toString())
+
+      	}
+
+      	console.log("inFlyZone", $rootScope.inFlyZone);
+
+      	if ($rootScope.inFlyZoneBl) {
+      		$scope.status = 0;
+      	}
+
+      	console.log("resulting Status", $scope.status);
 
 
 		if ($scope.status>.75) {
@@ -279,6 +317,13 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			$rootScope.launchStatus = "No-Go";	
 		}
 
+      	
+
+      });
+
+
+
+
 		$rootScope.$broadcast("changeLbackground");
 
 	}
@@ -289,7 +334,9 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		console.log("f", flightTime, "w", weight, "or", operatingRange);
 	}
 
-	 $scope.myData = [10,20,30,40,60, 80, 20, 50];
+
+
+
 
 
 });

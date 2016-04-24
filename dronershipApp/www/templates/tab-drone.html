@@ -39,43 +39,70 @@
       </label>
       </div>
 
+      <div class="item row">
+         <div class="col">
+        <label class="item-input item-select">
+          <div class="input-label">
+            Lightsaber
+          </div>
+          <select>
+            <option>Blue</option>
+            <option selected>Green</option>
+            <option>Red</option>
+          </select>
+        </label>
+      </div>
+      <div class="col">
+        <div class="item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Email">
+          </label>
+          <!-- <button class="button button-small">
+            Submit
+          </button> -->
+        </div>
+      </div>
+      </div>
+
       <div class="" ng-show="showInfo">
-      <div class="item item-divider">
-        Conditions
-      </div>
-      <div class="item">
-        <img class="" src={{data.icon_url}}></img>
-        <h2 class="weather">{{data.weather}}</h2>
-        <h2 class="location">{{data.observation_location.city}}</h2>
-        
-        
-        <!-- picture from wunderGround !!!!!!!!!!!!--> 
+        <div class="item item-divider">
+          Conditions
+        </div>
+        <div class="item">
+          <img class="" src={{data.icon_url}}></img>
+          <h2 class="weather">{{data.weather}}</h2>
+          <h2 class="location">{{data.observation_location.city}}</h2>
+          
+          
+          <!-- picture from wunderGround !!!!!!!!!!!!--> 
 
-      </div>
-      <div class="item">
-        <h2 class="temperature">Temperature: {{data.temperature_string}}</h2>
-        <h2 class="humidity">Humidity: {{data.relative_humidity}}</h2>
+        </div>
+        <div class="item">
+          <h2 class="temperature">Temperature: {{data.temperature_string}}</h2>
+          <h2 class="humidity">Humidity: {{data.relative_humidity}}</h2>
 
-      </div>
+        </div>
 
-      <div class="item">
-        <h2 class="">Wind: {{data.wind_string}}</h2>
-        <h2 class="">Direction and Speed: {{data.wind_dir}} at {{data.wind_mph}}mph</h2>
-        <h2 class="">Gusts mph: {{data.wind_gust_mph}}</h2>
+        <div class="item">
+          <h2 class="">Wind: {{data.wind_string}}</h2>
+          <h2 class="">Direction and Speed: {{data.wind_dir}} at {{data.wind_mph}}mph</h2>
+          <h2 class="">Gusts mph: {{data.wind_gust_mph}}</h2>
 
-      </div>
+        </div>
 
-      <div class="item">
-        <h2 class="">In no fly zone: yes/no</h2>
-      </div>
+        <div class="item">
+          <h2 class="">In-no fly zone: {{inFlyZoneStr}}</h2>
+          <!-- <span></span> -->
+          <i class="icon {{flyZoneIcon}}"></i>
+        </div>
 
-      <div class="item item-divider">
-        Launch Status
+        <div class="item item-divider">
+          Launch Status
+        </div>
+        <div class="item">
+          <h2 class="">{{launchStatus}}</h2>
+        </div>
       </div>
-      <div class="item">
-        <h2 class="">{{launchStatus}}</h2>
-      </div>
-    </div>
     </div>
 
     <div class="button-container">
@@ -84,14 +111,6 @@
 <!--       <button class="button button-block icon-right ion-play" ng-click="testFunction(flightTime, weight, operatingRange)">Test Function</button> -->
     </div>
 
-
-    <!-- testing d3js -->
-    <div id="d3donut" angulard3-donut-chart datajson="'../json/d3sample.json'"
-                    xaxis-name = ""
-                    xaxis-pos = ""
-                    yaxis-name = ""
-                    yaxis-pos = ""
-                    d3-format= "">
 
 
     <!-- augment to clean style -->

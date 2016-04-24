@@ -75,7 +75,7 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
                     fillColor: "red",
                     weight: 2,
                     opacity: 1,
-                    color: 'black',
+                    color: 'red',
                     dashArray: '3',
                     fillOpacity: 0.7
                 }
