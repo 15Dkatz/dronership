@@ -10,9 +10,9 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
   	// get Information method
   	$scope.myDrone = {
-  		"flightTime": 0,
-  		"weight": 0,
-  		"operatingRange": 0
+  		flightTime: 0,
+  		weight: 0,
+  		operatingRange: 0
   	};
 
   	$scope.calculateLaunchStatus = function(flightTime, weight, operatingRange) {
@@ -34,9 +34,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
  		$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
-             
             var myLatlng = new google.maps.LatLng(lat, long);
-             
             var mapOptions = {
                 center: myLatlng,
                 zoom: 16,
@@ -51,8 +49,6 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
             console.log(lat, long, map);
 
             // testing latitudes
-
-
             $scope.lat = lat;
             $scope.long = long;
 
@@ -96,13 +92,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 
   	$scope.data;
-
-
-  	// $scope.weather;
-  	// $scope.temperature;
-  	// $scope.wind_degrees;
-  	// $scope.wind_mph;
-
+  	// available data: *****
   	// weather
   	// temperature_string
   	// relative_humidity
@@ -157,10 +147,6 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 	$scope.myDrone;
 
-	// $scope.myDrone.flightTime = 0;
-	// $scope.myDrone.operatingRange = 0;
-	// $scope.myDrone.weight = 0;
-
 	$scope.showOtherDroneForm = false;
 
 	$scope.selectedDrone = function(myDrone) {
@@ -176,17 +162,26 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 				break;
 			case "AEE Toruk AP10":
+				$scope.showOtherDroneForm = false;
 				$scope.myDrone = {
 					flightTime: 25, //minutes
 					operatingRange: 500, //operating range
 					weight: 1300 //grams
 				}
-				$scope.showOtherDroneForm = false;
 				break;
-			// add more drone cases
+			// Flypro-XEagle-Sport
+			case "Flypro-XEagle-Sport":
+				$scope.showOtherDroneForm = false;
+				$scope.myDrone = {
+					flightTime: 22,
+					operatingRange: 300,
+					weight: 1260
 
+				}
+				break;
 			case "Not Listed":
 				$scope.showOtherDroneForm = true;
+				// default drone specs;
 				$scope.myDrone = {
 					// flightTime: 0, //minutes
 					// operatingRange: 0, //operating range
@@ -235,23 +230,15 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		$scope.status -= humidityDanger;
 		console.log("resulting Status", $scope.status);
 
-		// calculate dronePlusses
-		
 
-
-		console.log("myDrone specs", $scope.myDrone);
-		// add more algorhythmic analysis based on drones
+		// DroneSpecs previously defined in $scope.calculateLaunchStatus
+		// add more algorhythmic analysis based on drones ****
 		// add plusses to the status/percentage based on droneSpecs
-
 		var weightGoal = 10000; //grams
 		var weightPlus = $scope.myDrone.weight/weightGoal //returns a number 0.0-1.0;
 		$scope.status += weightPlus;
 		console.log("resulting Status", $scope.status);
 
-
-		// var tempDanger 
-		// console.log(windMphDanger, "windMphDanger", windGustDanger, "windGustDanger", humidityDanger, "humidityDanger", "resulting status", $scope.status);
-		// console.log("resulting Status", $scope.status);
 
 		if ($scope.status>.75) {
 			console.log("Clear");
@@ -270,8 +257,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			$rootScope.launchStatus = "No-go";	
 		}
 
-
 	}
+
 
 $scope.testFunction = function(flightTime, weight, operatingRange) {
 	// $scope.myDrone.weight = $scope.weight;

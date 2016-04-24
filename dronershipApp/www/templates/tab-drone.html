@@ -11,13 +11,12 @@
         <select ng-model="myDrone" ng-change="selectedDrone(myDrone)">
           <option>DJI Phantom 4</option>
           <option>AEE Toruk AP10</option>
+          <option>Flypro-XEagle-Sport</option>
           <option>Not Listed</option>
           <option>or Check conditions without drone</option>
         </select>
       </label>
 
-    <!-- </div> -->
-      <!-- change in controller -->
       <div class="" ng-show="showOtherDroneForm">
       <div class="item item-divider">
         Your Unique Drone Specs
@@ -37,7 +36,6 @@
       <input type="number" placeholder="meters" ng-model="operatingRange">
       </label>
       </div>
-    <!-- </div> -->
 
       <div class="" ng-show="showInfo">
       <div class="item item-divider">
@@ -45,22 +43,16 @@
       </div>
       <div class="item">
         <h2 class="location">Location: {{data.observation_location.city}}</h2>
-        <!-- <br> -->
-       <!--  <h2 class="longitude">Longitude: {{long}}</h2>
-        <h2 class="latitude">Latitude: {{lat}}</h2> -->
-    <!--   </div>
-      <div class="item"> -->
         <h2 class="weather">Weather: {{data.weather}}</h2>
-        <!-- picture -->
+        
+        <!-- picture from wunderGround-->
       </div>
       <div class="item">
         <h2 class="temperature">Temperature: {{data.temperature_string}}</h2>
         <h2 class="humidity">Humidity: {{data.relative_humidity}}</h2>
 
       </div>
-      <!-- div class="item item-divider">
-        Wind
-      </div> -->
+
       <div class="item">
         <h2 class="">Wind Direction: {{data.wind_dir}}</h2>
         <h2 class="">Wind Degrees: {{data.wind_degrees}}°</h2>
@@ -80,12 +72,9 @@
 
     <div class="button-container">
       <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus(flightTime, weight, operatingRange)">Check Launch Conditions</button>
+      <!-- Uncomment  following to test A function -->
 <!--       <button class="button button-block icon-right ion-play" ng-click="testFunction(flightTime, weight, operatingRange)">Test Function</button> -->
     </div>
-
-    
-
-     <!-- <button class="button button-block icon-right ion-play" ng-click="calculateStatus()">Calculate Status</button> -->
 
   </ion-content>
 </ion-view>
