@@ -279,23 +279,20 @@
 // 			$rootScope.launchStatus = "No-Go";	
 // 		}
 
+// /////////////////////THIS IS IT
 // 		$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
 //       	for(var i = 0; i < data.features.length; i++)
-//       	{
-
-//       		if (gju.pointInPolygon({"type":"Point","coordinates":[$scope.lat,$scope.long]},
-//                {"type":"Polygon", "coordinates":data.features[i].geometry.coordinates})
-//       			)
-//       		{
-//       			console.log("in the no fly zone");
-//       			break;
-//       		}
-
-//       		else{ console.log("ok")}
-      		
-//       		// console.log(data.features[i].geometry.coordinates.toString())
-
-//       	}
+	      	// {
+	      	// 	if(gju.pointInPolygon({"type":"Point","coordinates":[-158.6178,59.2828]},
+        //          {"type":"Polygon", "coordinates": data.features[i].geometry.coordinates}))
+	      	// {
+	      	// 	console.log("hi");
+	      	// }
+	      	// else
+	      	// {
+	      	// 	console.log("no hi");
+	      	// }
+// ///////////////////////////////////////////////
 
 // 		$rootScope.$broadcast("changeLbackground");
 
