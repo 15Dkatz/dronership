@@ -11,7 +11,8 @@
         <select ng-model="myDrone" ng-change="selectedDrone(myDrone)">
           <option>DJI Phantom 4</option>
           <option>AEE Toruk AP10</option>
-          <option>Other</option>
+          <option>Not Listed</option>
+          <option>or Check conditions without drone</option>
         </select>
       </label>
 
@@ -22,18 +23,18 @@
         Your Unique Drone Specs
       </div>
       <label class="item item-input item-stacked-label">
-      <span class="input-label">Flight Time (</span>
-      <input type="number" placeholder="Placeholder 2">
+      <span class="input-label">Flight Time (minutes)</span>
+      <input type="number" placeholder="Placeholder 2" ng-model="myDrone.flightTime">
       </label>
 
       <label class="item item-input item-stacked-label">
       <span class="input-label">Weight (grams)</span>
-      <input type="number" placeholder="Placeholder 1">
+      <input type="number" placeholder="Placeholder 1" ng-model="myDrone.operatingRange">
       </label>
 
       <label class="item item-input item-stacked-label">
       <span class="input-label">Operating Range (meters)</span>
-      <input type="number" placeholder="Placeholder 2">
+      <input type="number" placeholder="Placeholder 2" ng-model="myDrone.weight">
       </label>
       </div>
     </div>
@@ -84,7 +85,7 @@
     </div>
 
     <div class="button-container">
-    <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus()">Calculate Launch Status</button>
+    <button class="button button-block icon-right ion-play" ng-click="calculateLaunchStatus()">Check Launch Conditions</button>
     </div>
 
     

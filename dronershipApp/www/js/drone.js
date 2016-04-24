@@ -158,8 +158,9 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 				$scope.showOtherDroneForm = true;
 				break;
 
-		}
 
+		}
+		console.log("drone Object", $scope.myDrone);
 
 	}
 
@@ -180,6 +181,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 
 	$scope.calculateStatus = function() {
+		console.log("myDrone specs", $scope.myDrone);
+
 		var windMphLimit = 30;
 		var windGustLimit = 30;
 		var humidityLimit = 100;
