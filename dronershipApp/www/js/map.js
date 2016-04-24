@@ -70,21 +70,21 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
 
 
     // Get the countries geojson data from a JSON
-    // $http.get("../geojson/5_mile_airport.geo.json").success(function(data, status) {
-    //     angular.extend($scope, {
-    //         geojson: {
-    //             data: data,
-    //             style: {
-    //                 fillColor: "red",
-    //                 weight: 2,
-    //                 opacity: 1,
-    //                 color: 'white',
-    //                 dashArray: '3',
-    //                 fillOpacity: 0.7
-    //             }
-    //         }
-    //     });
-    // });
+    $http.get("../geojson/reducedList.geo.json").success(function(data, status) {
+        angular.extend($scope, {
+            geojson: {
+                data: data,
+                style: {
+                    fillColor: "red",
+                    weight: 2,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7
+                }
+            }
+        });
+    });
 });
 
 

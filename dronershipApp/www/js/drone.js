@@ -139,13 +139,19 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		switch (myDrone) {
 			case "DJI Phantom 4":
 				$scope.showOtherDroneForm = false;
-				// $scope.myDrone = {
-				// 	flightTime: "",
-				// 	operatingRange: "",
-					
-				// }
+				$scope.myDrone = {
+					flightTime: 28, //minutes
+					operatingRange: 5000, //operating range
+					weight: 1380 //grams
+				}
+
 				break;
 			case "AEE Toruk AP10":
+				$scope.myDrone = {
+					flightTime: 25, //minutes
+					operatingRange: 500, //operating range
+					weight: 1300 //grams
+				}
 				$scope.showOtherDroneForm = false;
 				break;
 			default:
