@@ -23,7 +23,7 @@ public class Drone {
 
 
     public Drone() {
-        //default constructo
+        //default constructor
     }
 
     public Drone(String name,
@@ -36,8 +36,7 @@ public class Drone {
                  double maxTemp,
                  boolean collisionAvoidance,
                  boolean isAutonomous,
-                 boolean gpsCompatible)
-    {
+                 boolean gpsCompatible) {
         this.name = name;
         this.flightTime = flightTime;
         this.operatingRange = operatingRange;
