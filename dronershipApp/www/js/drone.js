@@ -284,10 +284,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	}
 
 
-$scope.testFunction = function(flightTime, weight, operatingRange) {
-	// $scope.myDrone.weight = $scope.weight;
-	console.log("f", flightTime, "w", weight, "or", operatingRange);
-}
+	$scope.testFunction = function(flightTime, weight, operatingRange) {
+		// $scope.myDrone.weight = $scope.weight;
+		console.log("f", flightTime, "w", weight, "or", operatingRange);
+	}
+
+	 $scope.myData = [10,20,30,40,60, 80, 20, 50];
 
 
 });
