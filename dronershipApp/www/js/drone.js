@@ -120,6 +120,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	 	// ******************
 	 	$scope.calculateStatus();
 
+	 	$rootScope.$broadcast('mapCentered');
+
 	}
 
 	$scope.status = 1;
