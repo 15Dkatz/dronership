@@ -20,4 +20,122 @@ public class Drone {
     private boolean gpsCompatible;          // does the drone have GPS?
 
     // what else? can we get battery charge and other house keeping information relayed back?
-}
+
+
+    public Drone() {
+        //default constructo
+    }
+
+    public Drone(String name,
+                 double flightTime,
+                 double operatingRange,
+                 double weight,
+                 double maxAltitude,
+                 double maxSpeed,
+                 double minTemp,
+                 double maxTemp,
+                 boolean collisionAvoidance,
+                 boolean isAutonomous,
+                 boolean gpsCompatible)
+    {
+        this.name = name;
+        this.flightTime = flightTime;
+        this.operatingRange = operatingRange;
+        this.weight = weight;
+        this.maxAltitude = maxAltitude;
+        this.maxSpeed = maxSpeed;
+        this.minTemp = minTemp;
+        this.maxTemp = maxTemp;
+        this.collisionAvoidance = collisionAvoidance;
+        this.isAutonomous = isAutonomous;
+        this.gpsCompatible = gpsCompatible;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getFlightTime() {
+        return flightTime;
+    }
+
+    public void setFlightTime(double flightTime) {
+        this.flightTime = flightTime;
+    }
+
+    public double getOperatingRange() {
+        return operatingRange;
+    }
+
+    public void setOperatingRange(double operatingRange) {
+        this.operatingRange = operatingRange;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getMaxAltitude() {
+        return maxAltitude;
+    }
+
+    public void setMaxAltitude(double maxAltitude) {
+        this.maxAltitude = maxAltitude;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public double getMinTemp() {
+        return minTemp;
+    }
+
+    public void setMinTemp(double minTemp) {
+        this.minTemp = minTemp;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public void setMaxTemp(double maxTemp) {
+        this.maxTemp = maxTemp;
+    }
+
+    public boolean isCollisionAvoidance() {
+        return collisionAvoidance;
+    }
+
+    public void setCollisionAvoidance(boolean collisionAvoidance) {
+        this.collisionAvoidance = collisionAvoidance;
+    }
+
+    public boolean isAutonomous() {
+        return isAutonomous;
+    }
+
+    public void setAutonomous(boolean autonomous) {
+        isAutonomous = autonomous;
+    }
+
+    public boolean isGpsCompatible() {
+        return gpsCompatible;
+    }
+
+    public void setGpsCompatible(boolean gpsCompatible) {
+        this.gpsCompatible = gpsCompatible;
+    }
+} // end Drone class
