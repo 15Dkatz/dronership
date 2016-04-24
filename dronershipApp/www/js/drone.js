@@ -232,7 +232,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		// Modify the following to implement test conditions **************
 		// $scope.weather = "Partly Cloudy";
 		// $scope.wind_mph = 1.8;
-		$scope.wind_gust_mph = "10.5";
+		// $scope.wind_gust_mph = "10.5";
 		// $scope.relative_humidity = "64%";
 		// $scope.temp_f = 63.1;
 		// console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
