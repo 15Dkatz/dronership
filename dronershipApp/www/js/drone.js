@@ -152,6 +152,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	$scope.selectedDrone = function(myDrone) {
 		console.log("myDrone", myDrone);
 		switch (myDrone) {
+			// most common drones
 			case "DJI Phantom 4":
 				$scope.showOtherDroneForm = false;
 				$scope.myDrone = {
@@ -170,12 +171,30 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 				}
 				break;
 			// Flypro-XEagle-Sport
-			case "Flypro-XEagle-Sport":
+			case "Flypro XEagle Sport":
 				$scope.showOtherDroneForm = false;
 				$scope.myDrone = {
 					flightTime: 22,
 					operatingRange: 300,
 					weight: 1260
+
+				}
+				break;
+			case "Autel Robotics X-Star Premium":
+				$scope.showOtherDroneForm = false;
+				$scope.myDrone = {
+					flightTime: 25,
+					operatingRange: 2000,
+					weight: 1420
+
+				}
+				break;
+			case "ProDrone Byrd Premium":
+				$scope.showOtherDroneForm = false;
+				$scope.myDrone = {
+					flightTime: 29,
+					operatingRange: 2000,
+					weight: 1890
 
 				}
 				break;
@@ -187,7 +206,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 					// operatingRange: 0, //operating range
 					// weight: 0 //grams
 				}
-				break;
+
 			default:
 				break;
 
