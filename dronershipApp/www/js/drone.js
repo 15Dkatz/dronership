@@ -39,19 +39,19 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
             var long = position.coords.longitude;
             // position.coords.direction
 
-            var myLatlng = new google.maps.LatLng(lat, long);
-            var mapOptions = {
-                center: myLatlng,
-                zoom: 16,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };          
+            // var myLatlng = new google.maps.LatLng(lat, long);
+            // var mapOptions = {
+            //     center: myLatlng,
+            //     zoom: 16,
+            //     mapTypeId: google.maps.MapTypeId.ROADMAP
+            // };          
              
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);          
+            // var map = new google.maps.Map(document.getElementById("map"), mapOptions);          
              
-            $scope.map = map;   
+            // $scope.map = map;   
             $ionicLoading.hide();           
 
-            console.log(lat, long, map);
+            // console.log(lat, long, map);
 
             // testing latitudes
             $scope.lat = lat;
@@ -82,9 +82,9 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
             // $rootScope.latitude = ($rootScope.latitude).toPrecision(6);
             // $rootScope.longitude = ($rootScope.longitude).toPrecision(6);
 
-            console.log("la", $scope.lat, "lo", $scope.long);
+            // console.log("la", $scope.lat, "lo", $scope.long);
 
-            console.log("flightTime", flightTime, "weight", weight, "operatingRange", operatingRange);
+            // console.log("flightTime", flightTime, "weight", weight, "operatingRange", operatingRange);
 
             // $scope.myDrone.flightTime = 0;
 			if (flightTime!=undefined) {
@@ -153,7 +153,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		  	$scope.wind_gust_mph = $scope.data.wind_gust_mph;
 		  	$scope.relative_humidity = $scope.data.relative_humidity;
 		  	$scope.temp_f = $scope.data.temp_f;
-		  	console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
+		  	// console.log("weather", $scope.weather, "wind_mph", $scope.wind_mph, "gust", $scope.wind_gust_mph, "humidity", $scope.relative_humidity, "temperature", $scope.temp_f);
 
 		  	$scope.calculateStatus();
 	        // 
@@ -164,7 +164,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	    });
 	 	// ******************
 	 	
-
+	 	
 	 	$rootScope.$broadcast('mapCentered');
 
 	}
@@ -291,7 +291,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 		var humidityDanger = (parseFloat($scope.relative_humidity)/humidityLimit)*humidityModifier;
 		$scope.status -= humidityDanger;
-		console.log("resulting Status", $scope.status);
+		// console.log("resulting Status", $scope.status);
 
 
 		// DroneSpecs previously defined in $scope.calculateLaunchStatus
@@ -305,30 +305,30 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		$scope.inFlyZoneStr = "No";
 
 
-      	$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
-      	for(var i = 0; i < data.features.length; i++)
-	      	{
-	      		if(gju.pointInPolygon({"type":"Point","coordinates":[-158.6178,59.2828]},
-                 {"type":"Polygon", "coordinates": data.features[i].geometry.coordinates}))
-	      	{
+     //  	$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
+     //  	for(var i = 0; i < data.features.length; i++)
+	    //   	{
+	    //   		if(gju.pointInPolygon({"type":"Point","coordinates":[-158.6178,59.2828]},
+     //             {"type":"Polygon", "coordinates": data.features[i].geometry.coordinates}))
+	    //   	{
 	      		
-      			console.log("in the no fly zone");
-	      	}
-	      	else
-	      	{	
+     //  			console.log("in the no fly zone");
+	    //   	}
+	    //   	else
+	    //   	{	
 
-	      		console.log("ok", $rootScope.inFlyZoneBl)
-	      	}
-	    }
+	    //   		console.log("ok", $rootScope.inFlyZoneBl)
+	    //   	}
+	    // }
 		
 
-      	console.log("inFlyZone", $rootScope.inFlyZoneBl);
+      	// console.log("inFlyZone", $rootScope.inFlyZoneBl);
 
-      	if ($rootScope.inFlyZoneBl) {
-      		$scope.status = 0;
-      	}
+      	// if ($rootScope.inFlyZoneBl) {
+      	// 	$scope.status = 0;
+      	// }
 
-      	console.log("resulting Status", $scope.status);
+      	// console.log("resulting Status", $scope.status);
 
 
 		if ($scope.status>.75) {
@@ -350,7 +350,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 		$rootScope.$broadcast("changeLbackground");      	
 
-      });
+      // });
 
 	$rootScope.$broadcast("changeLbackground");
 
