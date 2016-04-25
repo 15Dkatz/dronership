@@ -233,8 +233,12 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 					// operatingRange: 0, //operating range
 					// weight: 0 //grams
 				}
-
+				break;
+			// case "Check conditions without a drone":
+				
+			// 	break;
 			default:
+				$scope.showOtherDroneForm = false;
 				break;
 
 
