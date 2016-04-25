@@ -39,24 +39,10 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
             var long = position.coords.longitude;
             // position.coords.direction
 
-            // var myLatlng = new google.maps.LatLng(lat, long);
-            // var mapOptions = {
-            //     center: myLatlng,
-            //     zoom: 16,
-            //     mapTypeId: google.maps.MapTypeId.ROADMAP
-            // };          
-             
-            // var map = new google.maps.Map(document.getElementById("map"), mapOptions);          
-             
-            // $scope.map = map;   
             $ionicLoading.hide();           
 
-            // console.log(lat, long, map);
-
-            // testing latitudes
             $scope.lat = lat;
             $scope.long = long;
-
 
             if (operatingRange!=undefined) {
 				$scope.myDrone.operatingRange = operatingRange;
@@ -79,14 +65,6 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
             $scope.latitudePlaceholder = ($rootScope.latitude).toPrecision(6);
             $scope.longitudePlaceholder = ($rootScope.longitude).toPrecision(6);
 
-            // $rootScope.latitude = ($rootScope.latitude).toPrecision(6);
-            // $rootScope.longitude = ($rootScope.longitude).toPrecision(6);
-
-            // console.log("la", $scope.lat, "lo", $scope.long);
-
-            // console.log("flightTime", flightTime, "weight", weight, "operatingRange", operatingRange);
-
-            // $scope.myDrone.flightTime = 0;
 			if (flightTime!=undefined) {
 				$scope.myDrone.flightTime = flightTime;
 			}
@@ -95,10 +73,6 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 			if (weight!=undefined) {
 				$scope.myDrone.weight = weight;
 			}
-			
-			// $scope.myDrone.operatingRange = 0;	
-			
-
 
             getWunderGround();
 
@@ -164,7 +138,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	    });
 	 	// ******************
 	 	
-	 	
+
 	 	$rootScope.$broadcast('mapCentered');
 
 	}
@@ -305,6 +279,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		$scope.inFlyZoneStr = "No";
 
 
+		// rewrite within-flyZone function
      //  	$http.get("../geojson/reducedList.geo.json").success(function(data, status) {
      //  	for(var i = 0; i < data.features.length; i++)
 	    //   	{
