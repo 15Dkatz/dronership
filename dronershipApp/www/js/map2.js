@@ -68,5 +68,6 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
 
 });
 
-
+// 
+// get response for "riskiness levels"
 // get geolocation going
