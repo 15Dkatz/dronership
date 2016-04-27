@@ -15,6 +15,7 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
     // $scope.map.data.loadGeoJson('../geojson/5_mile_airport.geo.json'); //2 second load
     $scope.map.data.loadGeoJson('../geojson/reducedList.geo.json'); //near instantaneous load
+      
 
     // any other useful geojson data sets we can load on top of this
     // no-fly zones [check]
@@ -37,7 +38,7 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
   }
 
   function placeMarkerAndPanTo(latitude, longitude, map) {
-     var latLng = new google.maps.LatLng(latitude, longitude);
+    var latLng = new google.maps.LatLng(latitude, longitude);
     var marker = new google.maps.Marker({
       position: latLng,
       map: $scope.map

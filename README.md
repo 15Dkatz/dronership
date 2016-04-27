@@ -7,3 +7,8 @@ Though we place high value in simple and clean design for the applications, we a
 While a mobile/web hybrid app was the focus for the competition, the technology under the hood is useful to both ground station and onboard solutions. As drones become increasingly automated, we anticipate the ability to quickly sense changing weather conditions and asses risk will be critical to the success of future flights.
 RESOURCES USED
 Wunderground API, JavaFX desktop application, ionic hybrid app, cordova Geolocation, mapbox (deprecated), geo.json datasets, and angularJs.
+
+
+
+
+ios Icon credit goes to Nico Tzogalis from theNounProject.
