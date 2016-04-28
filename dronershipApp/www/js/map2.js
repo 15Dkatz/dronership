@@ -14,26 +14,22 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
     
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
     // $scope.map.data.loadGeoJson('../geojson/5_mile_airport.geo.json'); //2 second load
-    $scope.map.data.loadGeoJson('/js/geojson/reducedList.geo.json'); //near instantaneous load
-    // document.addEventListener("deviceready", onDeviceReady, false);
-    // function onDeviceReady() {
-    //     console.log(cordova.file);
-    // // }
-    // $http.get('geojson/reducedList.geo.json')
-    //   .success(function (data) {
-    //       // The json data will now be in scope.
-    //       $scope.myJsonData = data;
-    //   });
-    // var geoJson = null;
+    // $scope.map.data.loadGeoJson('/js/geojson/reducedList.geo.json'); //near instantaneous load
+    
+    ionic.Platform.ready(function(){
+      $ionicLoading.show({
+            template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Loading no-fly zones'
+        });
+        $http.get('geojson/worldAirports.geo.json').success(function(data) {  
+        geojson = data;
+        console.log("geojson", geojson);
+        $scope.map.data.addGeoJson(geojson);
+         
+      }).then(function() {
+        $ionicLoading.hide();
+      });
+    })
 
-    // $http.get('geojson/reducedList.geo.json').success(function(data) {
-    //   console.log("success", data);
-    //   geojson = data;
-    // });
-
-    // $scope.map.data.addGeoJson(geoJson); //near instantaneous load
-
-    // $scope.map.data.loadGeoJson($scope.myJsonData); //near instantaneous load
     // any other useful geojson data sets we can load on top of this
     // no-fly zones [check]
     // what else...?
@@ -50,7 +46,7 @@ myApp.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading,
       });
     });
 
-    placeMarkerAndPanTo(latitude, longitude, $scope.map);
+    // placeMarkerAndPanTo(latitude, longitude, $scope.map);
    
   }
 
