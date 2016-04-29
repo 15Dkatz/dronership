@@ -335,6 +335,8 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 				}
 			}
 
+			$rootScope.$broadcast("changeLbackground");  
+
 		});
 
 		
@@ -353,7 +355,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 
 
-		$rootScope.$broadcast("changeLbackground");      	
+		    	
 
       // });
 
