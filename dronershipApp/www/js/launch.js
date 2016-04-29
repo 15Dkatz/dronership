@@ -5,23 +5,23 @@ myApp.controller('LaunchCtrl', function($scope, $rootScope) {
 
 	$rootScope.$on("changeLbackground", function() {
 		switch($rootScope.launchStatus) {
-			case "Clear for takeoff!":
+			case "Not in a No-Fly Zone. Clear for takeoff!":
 				$scope.backgroundStyle = "clear";
 				$scope.icon = "ion-checkmark-circled";
 				$scope.iconColor = "dark";
 				break;
 
-			case "No-Go":
+			case "In No-Fly Zone. No-go." || "Weather says No-Go.":
 				$scope.backgroundStyle = "no-go";
 				$scope.icon = "ion-close-circled";
 				$scope.iconColor = "light";
 				break;
-			case "Very risky":
+			case "Not in a No-Fly Zone. But very risky.":
 				$scope.backgroundStyle = "very-risky";
 				$scope.icon = "ion-alert-circled";
 				$scope.iconColor = "light";
 				break;
-			case "A little risky":
+			case "Not in a No-Fly Zone. But a little risky.":
 				$scope.backgroundStyle = "little-risky";
 				$scope.icon = "ion-alert-circled";
 				$scope.iconColor = "dark";

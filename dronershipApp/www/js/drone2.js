@@ -275,7 +275,7 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 		var weightPlus = $scope.myDrone.weight/weightGoal //returns a number 0.0-1.0;
 		$scope.status += weightPlus;
 
-		$rootScope.inFlyZoneBl = false;
+		// $rootScope.inFlyZoneBl = false;
 		$scope.inFlyZoneStr = "No";
 
 
@@ -283,40 +283,61 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 	    // Within no flyzone function
 	    // change index.html with drone2.js to use function
 	    // test coordinates:
-		// [-158.6178, 59.2828] in noFlyZonePoly[1] return true
+		// [47.608013, -122.335167] in noFlyZonePoly[1] return true
 		// [$long, $lat] W and S append negative
 
-		inFlyZoneBl = false;
-		$http.get("../geojson/reducedList.geo.json").success(function(data, status){
+		$scope.inFlyZoneBl = false;
+		$http.get("geojson/worldAirports.geo.json").success(function(data, status){
 
 			for( var i = 0; i < data.features.length; i++)
 			{
 				//coordinate to check if in no fly zone
 				//modify $root.longitude, $rootScope.latitude for test coordinates 
-				checkPoint = {"type": "Point", "coordinates": [-158.6178, 59.2828]};
+				checkPoint = {"type": "Point", "coordinates": [$rootScope.longitude, $rootScope.latitude]};
 
 				//no-fly zone polygon coordinates
 				noFlyZonePoly = {"type": "Polygon", "coordinates": data.features[i].geometry.coordinates};
 
 				if(gju.pointInPolygon(checkPoint, noFlyZonePoly))
 				{
-					inFlyZoneBl = true;
-					console.log("in the no fly zone:", inFlyZoneBl);
+					$scope.inFlyZoneBl = true;
 					break;
 				}
+			}
 
-				else
-				{
-					inFlyZoneBl = false;
-					console.log("in the no fly zone:", inFlyZoneBl);
+			console.log("in the no fly zone (final Status):", $scope.inFlyZoneBl);
+
+			if ($scope.inFlyZoneBl) {
+				console.log("In No-Fly Zone. No-go.");
+				$rootScope.launchStatus = "In No-Fly Zone. No-go.";
+				$rootScope.launchStatus2 = "No-go";		
+			} else {
+
+				if ($scope.status>.75) {
+					console.log("Clear");
+					$rootScope.launchStatus = "Not in a No-Fly Zone. Clear for takeoff!";
+					$rootScope.launchStatus2 = "Clear";
 				}
-
-
+				else if ($scope.status>.5) {
+					console.log("A little risky");
+					$rootScope.launchStatus = "Not in a No-Fly Zone. But a little risky.";
+					$rootScope.launchStatus2 = "A little risky.";	
+				}
+				else if ($scope.status>.25) {
+					console.log("Very risky");	
+					$rootScope.launchStatus = "Not in a No-Fly Zone. But very risky.";
+					$rootScope.launchStatus2 = "Very risky.";
+				}
+				else {
+					console.log("No-go");
+					$rootScope.launchStatus = "Weather says No-Go.";
+					$rootScope.launchStatus2 = "No-go";	
+				}
 			}
 
 		});
 
-		console.log("in the no fly zone:", inFlyZoneBl);
+		
 
 
 
@@ -328,22 +349,9 @@ myApp.controller('DroneCtrl', function($scope, $cordovaGeolocation, $ionicLoadin
 
 
 
-		if ($scope.status>.75) {
-			console.log("Clear");
-			$rootScope.launchStatus = "Clear for takeoff!";
-		}
-		else if ($scope.status>.5) {
-			console.log("A little risky");
-			$rootScope.launchStatus = "A little risky";	
-		}
-		else if ($scope.status>.25) {
-			console.log("Very risky");	
-			$rootScope.launchStatus = "Very risky";
-		}
-		else {
-			console.log("No-go");
-			$rootScope.launchStatus = "No-Go";	
-		}
+
+
+
 
 		$rootScope.$broadcast("changeLbackground");      	
 
